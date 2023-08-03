@@ -1,0 +1,28 @@
+// To create multiple broker in the same server, follow the below steps:
+
+Go inside this dir:
+/home/npciappuserl2/kafka_2.12-3.4.0/config
+
+make copies of server.properties
+eg: server.properties.broker1
+
+Modify the server properties:
+1) broker.id: it's should be unique
+
+2) listeners: change the port number.
+
+3) log.dirs: also do the changes here.
+
+
+Start each broker:
+kafka-server-start.sh /home/npciappuserl2/kafka_2.12-3.4.0/config/server.properties &
+kafka-server-start.sh /home/npciappuserl2/kafka_2.12-3.4.0/config/server.properties.broker1 &
+kafka-server-start.sh /home/npciappuserl2/kafka_2.12-3.4.0/config/server.properties.broker2 &
+
+
+
+Verify the broker setup: To verify that the brokers are running, you can use the kafka-topics.sh 
+kafka-topics.sh --bootstrap-server 10.21.43.89:9092 --topic third_topic  --create --partitions 5 --replication-factor 3
+
+// So here we use replication factor three, so replication factor can be equal to broker and less than that.
+

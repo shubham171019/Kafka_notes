@@ -1,0 +1,80 @@
+IP: 10.21.43.89
+
+# To Start the zookeper:
+zookeeper-server-start.sh /home/npciappuserl2/kafka_2.12-3.4.0/config/zookeeper.properties
+
+# To start the kafka server:
+kafka-server-start.sh /home/npciappuserl2/kafka_2.12-3.4.0/config/server.properties 
+
+
+# TO start in the background:
+nohup zookeeper-server-start.sh /home/npciappuserl2/kafka_2.12-3.4.0/config/zookeeper.properties > /dev/null 2>&1 &
+nohup kafka-server-start.sh /home/npciappuserl2/kafka_2.12-3.4.0/config/server.properties > /dev/null 2>&1 &
+nohup kafka-server-start.sh /home/npciappuserl2/kafka_2.12-3.4.0/config/server.properties.broker2 > /dev/null 2>&1 &
+nohup kafka-server-start.sh /home/npciappuserl2/kafka_2.12-3.4.0/config/server.properties.broker3 > /dev/null 2>&1 &
+
+# TO stop the service:
+zookeeper-server-stop.sh
+kafka-server-stop.sh 
+
+//note:
+we can start the kafka without zookeeper using KRaft
+
+
+# TO create the topics:
+kafka-topics.sh --bootstrap-server 10.21.43.89:9092 --topic first_topic  --create
+
+
+
+# TO create the topic with particular number of partitions:
+kafka-topics.sh --bootstrap-server 10.21.43.89:9092 --topic second_topic  --create --partitions 5
+
+# TO create the topic with particular number of partitions and particular number of replications-factor:
+kafka-topics.sh --bootstrap-server 10.21.43.89:9092 --topic third_topic  --create --partitions 5 --replication-factor 1
+
+// replication-factor 2 will not work becoz replication-factor should be equal to number of availble broker. right now in localhost we have only one broker right now.
+
+# TO list out the topics:
+kafka-topics.sh --bootstrap-server 10.21.43.89:9092 --list
+
+# Describe the topics:
+kafka-topics.sh --bootstrap-server 10.21.43.89:9092 --topic third_topic --describe
+
+# Delete the topics:
+kafka-topics.sh --bootstrap-server 10.21.43.89:9092 --topic third_topic --delete
+ 
+
+# TO Read the data from consumer
+kafka-console-consumer.sh --bootstrap-server 10.21.43.89:9092 --topic node_topic --from-beginning
+
+# TO produce the message to kafka topic
+kafka-console-producer.sh --bootstrap-server 10.21.43.89:9092 --topic topic1
+
+
+// using kafka-node module to create topic from node js
+
+const kafka = require('kafka-node');
+const client = new kafka.KafkaClient({kafkaHost: '10.21.43.89:9092'});
+
+    var Producer = kafka.Producer,
+    KeyedMessage = kafka.KeyedMessage,
+   // client = new kafka.KafkaClient(),
+    producer = new Producer(client),
+    km = new KeyedMessage('key', 'message'),
+    payloads = [
+        { topic: 'topic1', messages: 'hey Shuham, Welcome to Kafka', partition: 0 },
+        { topic: 'topic2', messages: ['hello', 'world', km] }
+    ];
+producer.on('ready', function () {
+    producer.send(payloads, function (err, data) {
+        console.log(data);
+    });
+});
+
+// facing difficulties using node-rdkafka module 
+
+
+
+
+
+

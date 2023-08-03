@@ -1,0 +1,143 @@
+kafkajs:
+
+current version: 2.2.4
+Dependencies: 0
+last release date: 27/03/2023
+compatible for kafka version: compatible with Kafka 0.10+
+
+Performance: While kafkajs is generally performant, it might not provide the same level of raw performance as some other Kafka clients written in lower-level languages such as C or C++. If you have stringent performance requirements, it's worth considering other Kafka client options.
+
+Dev Dependencies: 27
+@types/jest 
+@types/node 
+@typescript-eslint/typescript-estree 
+eslint 
+eslint-config-prettier 
+eslint-config-standard 
+eslint-plugin-import 
+eslint-plugin-jest 
+eslint-plugin-node 
+eslint-plugin-prettier 
+eslint-plugin-promise 
+eslint-plugin-standard 
+execa 
+glob 
+husky 
+ip 
+jest 
+jest-circus 
+jest-extended 
+jest-junit 
+jsonwebtoken 
+lint-staged 
+mockdate 
+prettier 
+semver 
+typescript 
+uuid 
+
+
+
+
+ 
+kafka-node:
+
+current version: 5.0.0
+last release date: 4 years back
+compatible for node: yes with 8
+compatible for kafka version: Apache Kafka 0.9 and later.
+
+Dependencies: 14
+async 
+binary 
+bl 
+buffer-crc32 
+buffermaker 
+debug 
+denque 
+lodash 
+minimatch 
+nested-error-stacks 
+optional 
+retry 
+uuid 
+snappy 
+
+Dev Dependencies: 22
+@types/node 
+coveralls 
+doctoc 
+eslint 
+eslint-config-semistandard 
+eslint-config-standard 
+eslint-plugin-dependencies 
+eslint-plugin-import 
+eslint-plugin-node 
+eslint-plugin-promise 
+eslint-plugin-standard 
+execa 
+istanbul 
+mocha 
+optimist 
+proxyquire 
+should 
+sinon 
+through2 
+tslint 
+tslint-config-semistandard 
+typescript 
+
+
+
+
+
+no-kafka:
+
+current version: 3.4.3
+last release date: 4 years back
+
+compatible for node: 
+compatible for kafka version: 
+
+Dependencies: 10
+bin-protocol 
+bluebird 
+buffer-crc32 
+hashring 
+lodash 
+murmur-hash-js 
+nice-simple-logger 
+wrr-pool 
+@types/lodash 
+@types/bluebird 
+
+Dev Dependencies: 10
+chai 
+chai-as-promised 
+eslint 
+eslint-config-magictoolbox 
+eslint-plugin-react 
+istanbul 
+mocha 
+sinon 
+sinon-chai 
+snappy 
+
+
+
+
+
+
+node-rdkafka: 
+
+Facing issue in installing this module.
+
+
+
+kafkajs: kafkajs is a feature-rich and modern Kafka client for Node.js. It provides a high-level API, support for transactions, consumer groups, and an easy-to-use interface. It is actively maintained and has good community support.
+
+node-rdkafka: node-rdkafka is a Node.js binding for the librdkafka C library. It offers a comprehensive feature set, high performance, and supports both producers and consumers. It is a powerful choice if you require advanced Kafka features and need high performance.
+
+kafka-node: kafka-node is a popular Kafka client for Node.js. It provides both high-level and low-level APIs, allowing you to work with Kafka at different levels of abstraction. It has been around for a while and has a large user community.
+
+no-kafka: no-kafka is a lightweight Kafka client for Node.js. It focuses on simplicity and ease of use while providing the necessary functionality to work with Kafka. It is a good choice for simple Kafka use cases and projects with less complexity.
